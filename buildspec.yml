@@ -9,6 +9,7 @@ phases:
     commands:
       - echo $AWS_REGION
       - $(aws ecr get-login-password --no-include-email --region $AWS_REGION)
+      - aws ecr get-login-password --region $AWS_REGION
       - echo Logging in to Amazon ECR...
       - aws --version
       - REPOSITORY_URI=public.ecr.aws/p3j4c6q9/node-app
