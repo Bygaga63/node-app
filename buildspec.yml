@@ -3,12 +3,13 @@ version: 0.2
 env:
   variables:
     AWS_REGION: "eu-central-1"
+    AWS_ACCOUNT_ID:: "394681687442"
 
 phases:
   pre_build:
     commands:
       - echo $AWS_REGION
-      - REPOSITORY_URI=394681687442.dkr.ecr.eu-central-1.amazonaws.com/node-app
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/node-app
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
       - echo Logging in to Amazon ECR...
       - aws --version
